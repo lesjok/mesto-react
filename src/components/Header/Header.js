@@ -1,4 +1,4 @@
-import logo from '../../images/logo.svg';
+import logo from "../../images/logo.svg";
 
 function Header() {
   return (
@@ -7,7 +7,7 @@ function Header() {
         <img src={logo} alt="лого" className="header__logo" />
       </a>
     </header>
-  )
+  );
 }
 
 export default Header;
