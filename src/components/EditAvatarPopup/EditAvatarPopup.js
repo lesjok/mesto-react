@@ -13,10 +13,11 @@ return (
   <PopupWithForm
     type="avatar"
     title="Обновить аватар"
-    buttonText="Сохранить"
     isOpen={props.isOpen}
     onClose={props.onClose}
     onSubmit={handleSubmit}
+    isLoading={props.isLoading}
+    buttonText="Сохранить"
   >
     <input
       type="url"
