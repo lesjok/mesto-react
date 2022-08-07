@@ -38,20 +38,8 @@ export class Api {
       }),
     }).then(this._errorHandler);
   }
-  setLike(data) {
-    return fetch(`${this._url}/cards/${data._id}/likes`, {
-      method: "PUT",
-      headers: this._headers,
-    }).then(this._errorHandler);
-  }
   deleteCard(data) {
-    return fetch(`${this._url}/cards/${data}`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._errorHandler);
-  }
-  removeLike(data) {
-    return fetch(`${this._url}/cards/${data._id}/likes`, {
+    return fetch(`${this._url}/cards/${data._id}`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._errorHandler);
@@ -61,9 +49,23 @@ export class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: item.avatar,
+        avatar: item.avatar
       }),
     }).then(this._errorHandler);
+  }
+  changeLikeCardStatus(cardId, isLiked) {
+    if (!isLiked) {
+      return fetch(`${this._url}/cards/${cardId}/likes`, {
+        method: "PUT",
+        headers: this._headers,
+      }).then(this._errorHandler);
+  }
+     else {
+      return fetch(`${this._url}/cards/${cardId}/likes`, {
+        method: "DELETE",
+        headers: this._headers,
+      }).then(this._errorHandler);
+    }
   }
 }
 const api = new Api({
